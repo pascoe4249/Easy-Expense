@@ -1,0 +1,103 @@
+<ion-header >
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><strong>{{ isEdit ? 'Edit' : 'New' }} Receipt</strong></ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onSubmit()" [disabled]="form.invalid">
+        <ion-icon  slot="icon-only" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Establishment Name
+            </ion-label>
+            <ion-input
+            type="text"
+            formControlName="name">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Type
+            </ion-label>
+            <ion-select
+            formControlName="type">
+              <ion-select-option class="select" value="Accomodation">Accomodation</ion-select-option>
+              <ion-select-option value="Clothes">Clothes</ion-select-option>
+              <ion-select-option value="Communications">Communications</ion-select-option>
+              <ion-select-option value="Emergency">Emergency</ion-select-option>
+              <ion-select-option value="Food">Food</ion-select-option>
+              <ion-select-option value="Fuel">Fuel</ion-select-option>
+              <ion-select-option value="Health">Health</ion-select-option>
+              <ion-select-option value="Parking">Parking</ion-select-option>
+              <ion-select-option value="Other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <app-image-picker
+          (imagePicked)="onImagePicked($event)"
+          (imageTaken)="onImageDate($event)"
+          [selectedImage]="this.imageValue">
+          </app-image-picker>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Receipt Amount (£)
+            </ion-label>
+            <ion-input
+            type="number"
+            formControlName="amount">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Reciept Issue Date
+            </ion-label>
+            <ion-datetime 
+            displayFormat="DD / MM / YY"
+            formControlName="date"
+            max="2040-12-31"
+            min="2020-01-01">
+          </ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="isEdit">
+        <ion-col size-md="6" offset-md="3">
+          <ion-button class="button" color="danger" (click)="onDelete()">Delete</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

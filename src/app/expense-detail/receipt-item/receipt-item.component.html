@@ -1,0 +1,8 @@
+<div>
+  <h1><strong>{{ name }}</strong></h1>
+  <ion-img class="image" [src]="image"></ion-img>
+  <p>Type: <strong> {{ type }} </strong></p>
+  <p>Amount: <strong> {{ amount | currency: 'GBP' }} </strong></p>
+  <p>Issue Date: <strong>{{ date | date: 'dd/MM/yy' }} </strong></p>
+  <p>Image Taken: <strong>{{ imageTaken | date: 'dd/MM/yy - HH:mm' }} </strong></p>
+</div>

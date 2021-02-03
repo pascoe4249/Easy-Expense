@@ -1,0 +1,105 @@
+<ion-header >
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><strong>New Expense</strong></ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onSubmit()" [disabled]="form.invalid">
+        <ion-icon  slot="icon-only" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Expense Title
+            </ion-label>
+            <ion-input
+            type="text"
+            formControlName="title">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Brief Description
+            </ion-label>
+            <ion-input
+            type="text"
+            formControlName="description">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">
+              Date 
+            </ion-label>
+            <ion-datetime 
+            displayFormat="DD / MM / YY"
+            formControlName="date"
+            max="2040-12-31"
+            min="2020-01-01">
+          </ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <div>
+            <h2>Guide</h2>
+            <ol>
+              <li>
+                Give your expense a title. 
+                This could be the name of the course you had to attend,
+                or the event you were part of.
+                <br>
+                e.g Safety Course
+              </li>
+              <br>
+              <li>
+                Add a brief description of what it involved.
+                Some extra justification or information.
+                <br>
+                e.g Travel to London
+              </li>
+              <br>
+              <li>
+                Enter the date the trip, event or course started.
+                This is to identify different claims to the same location.
+              </li>
+              <br>
+              <li>
+                Click the check, in the top right, to confirm.
+                You will be able to add individual receipts later
+                by clicking on the claim, from the Expenses Log page.
+              </li>
+              <br>
+              <li>
+                Clicking the cross, in the top left corner, 
+                will cancel creation and take you back.
+              </li>
+            </ol>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

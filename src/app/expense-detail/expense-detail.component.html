@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><strong>{{ expense.title }}</strong></ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onAddReceipt()">
+        <ion-icon  slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="total">
+    <h3>Total Claim: <strong>{{expense.amount | currency: 'GBP'}}</strong></h3>
+    <ion-button color="danger" (click)="onDeleteExpense()">Delete</ion-button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let receipt of receipts let i = index">
+      <ion-col size-md="6" offset-md="3" >
+        <app-receipt-item
+        [name]="receipt.name"
+        [type]="receipt.type"
+        [amount]="receipt.amount"
+        [date]="receipt.date"
+        [image]="receipt.image"
+        [imageTaken]="receipt.imageTaken"
+        (click)=" onEditReceipt(i)">
+      </app-receipt-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

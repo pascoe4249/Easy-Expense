@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button (click)="onInfoClick()">
+        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><strong>Expenses Log</strong></ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onAddExpense()">
+        <ion-icon  slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let expense of expenses, let i = index">
+      <ion-col size-md="6" offset-md="3">
+        <app-expense-item
+        [title]=expense.title
+        [amount]=expense.amount
+        [date]=expense.date
+        [description]=expense.description
+        (click)="onViewExpense(i)"
+        ></app-expense-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "easy-expense",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
